@@ -1,6 +1,7 @@
 from splinter import Browser
 from bs4 import BeautifulSoup
 import pandas as pd
+import requests
 
 
 def scrape():
@@ -82,11 +83,11 @@ def scrape():
 
         soup = BeautifulSoup(browser.html, 'html.parser')
 
-        full = soup.find('a', text='Sample')
+        full_image = soup.find('a', text='Sample')
 
-        img_url = full['href']
+        full_url = full_image['href']
 
-        hemisphere_image_urls.append({'title': title, 'img_url': img_url})
+        hemisphere_image_urls.append({'title': title, 'image_url': full_url})
 
         browser.back()
 
