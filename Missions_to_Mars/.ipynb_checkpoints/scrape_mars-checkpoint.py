@@ -13,14 +13,14 @@ def scrape():
     
 
 
-    # Visit visitcostarica.herokuapp.com
+    # Visit https://mars.nasa.gov
     news_url = 'https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
     response = requests.get(news_url)
 
     # Scrape page into Soup
     soup = BeautifulSoup(response.text, 'html')
 
-    # Get the latest news and summary paragraph
+    # Locate the latest news and summary paragraph
     news_title = soup.find('div', class_='content_title').find('a').text
     news_p = soup.find('div', class_='rollover_description_inner').text
 
@@ -91,7 +91,7 @@ def scrape():
     for h in hemisphere_items:
         
         #Scrape hemisphere title
-        title = (h.find('h3').text).replace(' Enhanced','')
+        title = h.find('h3').text
         
         # Navigate to hemisphere page
         browser.click_link_by_partial_text(title)

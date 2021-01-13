@@ -91,7 +91,7 @@ def scrape():
     for h in hemisphere_items:
         
         #Scrape hemisphere title
-        title = (h.find('h3').text).replace(' Enhanced','')
+        title = h.find('h3').text
         
         # Navigate to hemisphere page
         browser.click_link_by_partial_text(title)
