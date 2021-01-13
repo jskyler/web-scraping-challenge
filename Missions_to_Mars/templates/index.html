@@ -33,37 +33,40 @@
                 <h3>Featured Mars Image</h3>
             </div>
             <div class="col-md-4">
-                <div class="card">
-                    <h3 class="card-header header">Mars Facts</h3>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
-                            {{mars.html_table | safe}}
-                        </table>
-                    </div>
+                <h3>Mars Facts</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        {{mars.html_table | safe}}
+                    </table>
+                    
                 </div>
 
             </div>
         </div>
 
+        <br>
+
         <div class="container col-md-12">
-            <div class="row">
+            <div class="col-md-12">
                 <h3 class="text-center">Mars Hemispheres</h3>
-                {% for hemisphere in hemisphere_image_urls %}
+                <hr>
+            </div>
+            <div class="row justify-content-center">
+                {% for hemisphere in mars.hemisphere_image_urls %}
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
-                                <img class="card-img-top" src="{{hemisphere.full_url}}">
-                                <h2 class="card-title">{{hemisphere.title}}</h2>
+                                <img class="card-img-top" src="{{ hemisphere.image_url }}">
+                                <h4 class="card-title">{{hemisphere.title}}</h4>
+                                <br>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
+                
             </div>
         </div>
-
-
-
-
+        <hr>
 
     </div>
     
