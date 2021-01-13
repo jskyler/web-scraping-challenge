@@ -117,5 +117,9 @@ def scrape():
     # Store hemisphere data in mars dictionary
     mars_dict['hemisphere_image_urls'] = hemisphere_image_urls
     
+    
+    
+    
+    
     #Return results
     return mars_dict
