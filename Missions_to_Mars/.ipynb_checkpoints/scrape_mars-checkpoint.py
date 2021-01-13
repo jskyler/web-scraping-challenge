@@ -20,7 +20,7 @@ def scrape():
     # Scrape page into Soup
     soup = BeautifulSoup(response.text, 'html')
 
-    # Get the average temps
+    # Get the latest news and summary paragraph
     news_title = soup.find('div', class_='content_title').find('a').text
     news_p = soup.find('div', class_='rollover_description_inner').text
 
@@ -31,19 +31,19 @@ def scrape():
     
     
     
-    images_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
-    browser.visit(images_url)
+    #images_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
+    #browser.visit(images_url)
     
-    html = browser.html
-    soup = BeautifulSoup(html, 'html.parser')
+    #html = browser.html
+    #soup = BeautifulSoup(html, 'html.parser')
     
-    main_url = 'https://www.jpl.nasa.gov'
+    #main_url = 'https://www.jpl.nasa.gov'
 
-    partial_url = soup.find('article',['style']).replace('background-image: url(','').replace(');','')[1:-1]
+    #partial_url = soup.find('article',['style']).replace('background-image: url(','').replace(');','')[1:-1]
 
-    featured_image_url = main_url+partial_url
+    #featured_image_url = main_url+partial_url
     
-    mars_dict['featured_image_url'] = featured_image_url
+    #mars_dict['featured_image_url'] = featured_image_url
     
     
     
@@ -55,7 +55,7 @@ def scrape():
     mars_table_df = mars_tables[0]
     mars_table_df.set_index(0, inplace=True)
     mars_table_df.index.names = [None]
-    mars_table_df.columns = ['']
+    mars_table_df.columns=['Mars']
     
     html_table = mars_table_df.to_html()
     html_table = html_table.replace('\n','')
@@ -93,7 +93,7 @@ def scrape():
 
     browser.quit()
     
-    mars_dict['hemisphere_image_urls'] = hemisphere_images_url
+    mars_dict['hemisphere_image_urls'] = hemisphere_image_urls
     
     
     return mars_dict
